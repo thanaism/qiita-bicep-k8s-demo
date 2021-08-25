@@ -1,0 +1,38 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.191.1/containers/azure-bicep
+{
+	"name": "Azure Bicep (Community)",		
+	"dockerFile": "Dockerfile",
+	"overrideCommand": false,
+	
+	// Set *default* container specific settings.json values on container create.
+	"settings": {},
+		
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-vscode.azurecli",
+		"ms-dotnettools.vscode-dotnet-runtime",
+		"ms-azuretools.vscode-bicep",
+
+		"mindaro.mindaro",
+		"ms-azuretools.vscode-docker",
+		"ms-kubernetes-tools.vscode-kubernetes-tools"
+	],
+
+	"remoteEnv": {
+		"SYNC_LOCALHOST_KUBECONFIG": "false"
+	},
+
+	"mounts": [
+		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind",
+		"source=${env:HOME}${env:USERPROFILE}/.kube,target=/usr/local/share/kube-localhost,type=bind"
+		// Uncomment the next line to also sync certs in your .minikube folder
+		// "source=${env:HOME}${env:USERPROFILE}/.minikube,target=/usr/local/share/minikube-localhost,type=bind"
+	],
+	
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+	// "remoteUser": "vscode"
+}
